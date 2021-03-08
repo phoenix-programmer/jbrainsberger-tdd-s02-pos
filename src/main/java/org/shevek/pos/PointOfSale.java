@@ -27,6 +27,10 @@ public class PointOfSale {
             lcdDisplay.setText(PRODUCT_NOT_FOUND);
             return;
         }
-        lcdDisplay.setText(products.get(0).getPrice().toString());
+        lcdDisplay.setText(products.stream()
+                .filter(product -> product.getBarCode().equalsIgnoreCase(barCode))
+                .findFirst()
+                .map(product -> product.getPrice().toString())
+                .orElse(PRODUCT_NOT_FOUND));
     }
 }
