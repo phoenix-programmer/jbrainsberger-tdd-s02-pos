@@ -8,7 +8,7 @@ import java.util.*;
 import static java.util.Collections.singletonList;
 import static org.assertj.core.api.Assertions.*;
 
-public class PointOfSaleTest {
+public class SellOneItemTest {
 
     public static final Product BLACK_AND_DECKER_HAMMER = new Product("123",
             "Hammer - Black & Decker",
