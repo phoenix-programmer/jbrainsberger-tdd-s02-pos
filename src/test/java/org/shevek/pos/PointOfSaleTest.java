@@ -12,9 +12,9 @@ public class PointOfSaleTest {
 
     public static final Product BLACK_AND_DECKER_HAMMER = new Product("123",
             "Hammer - Black & Decker",
-            BigDecimal.valueOf(20.5));
+            new Amount("USD", BigDecimal.valueOf(20.5)));
     public static final Product GENERIC_PHILLIPS_SCREWDRIVER =
-            new Product("776", "Generic Phillips Screwdriver", BigDecimal.valueOf(5.8));
+            new Product("776", "Generic Phillips Screwdriver", new Amount("USD", BigDecimal.valueOf(5.8)));
 
     @Test
     @DisplayName("Null input should result with Invalid Input message")
@@ -49,7 +49,7 @@ public class PointOfSaleTest {
         LCDDisplay lcdDisplay = new LCDDisplay();
         PointOfSale pointOfSale = new PointOfSale(lcdDisplay, singletonList(BLACK_AND_DECKER_HAMMER));
         pointOfSale.onBarCode("123");
-        assertThat(lcdDisplay.lastDisplayedText()).isEqualTo("20.5");
+        assertThat(lcdDisplay.lastDisplayedText()).isEqualTo("USD 20.5");
     }
 
     @Test
@@ -67,6 +67,6 @@ public class PointOfSaleTest {
         LCDDisplay lcdDisplay = new LCDDisplay();
         PointOfSale pointOfSale = new PointOfSale(lcdDisplay, List.of(BLACK_AND_DECKER_HAMMER, GENERIC_PHILLIPS_SCREWDRIVER));
         pointOfSale.onBarCode("776");
-        assertThat(lcdDisplay.lastDisplayedText()).isEqualTo("5.8");
+        assertThat(lcdDisplay.lastDisplayedText()).isEqualTo("USD 5.8");
     }
 }

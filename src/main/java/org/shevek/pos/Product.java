@@ -1,14 +1,12 @@
 package org.shevek.pos;
 
-import java.math.*;
-
 public class Product {
 
     private final String barCode;
     private final String name;
-    private final BigDecimal price;
+    private final Amount price;
 
-    public Product(String barCode, String name, BigDecimal price) {
+    public Product(String barCode, String name, Amount price) {
         this.barCode = barCode;
         this.name = name;
         this.price = price;
@@ -22,7 +20,7 @@ public class Product {
         return name;
     }
 
-    public BigDecimal getPrice() {
+    public Amount getPrice() {
         return price;
     }
 }
