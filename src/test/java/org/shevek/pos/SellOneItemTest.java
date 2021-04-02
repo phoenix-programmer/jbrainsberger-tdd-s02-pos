@@ -5,16 +5,21 @@ import org.junit.jupiter.api.*;
 import java.math.*;
 import java.util.*;
 
-import static java.util.Collections.singletonList;
+import static java.util.Collections.*;
 import static org.assertj.core.api.Assertions.*;
 
 public class SellOneItemTest {
 
-    public static final Product BLACK_AND_DECKER_HAMMER = new Product("123",
-            "Hammer - Black & Decker",
-            new Amount("USD", BigDecimal.valueOf(20.5)));
-    public static final Product GENERIC_PHILLIPS_SCREWDRIVER =
-            new Product("776", "Generic Phillips Screwdriver", new Amount("USD", BigDecimal.valueOf(5.8)));
+    private static final Product BLACK_AND_DECKER_HAMMER = Product.builder()
+            .barCode("123")
+            .name("Hammer - Black & Decker")
+            .price(new Amount("USD", BigDecimal.valueOf(20.5)))
+            .build();
+    private static final Product GENERIC_PHILLIPS_SCREWDRIVER = Product.builder()
+            .barCode("776")
+            .name("Generic Phillips Screwdriver")
+            .price(new Amount("USD", BigDecimal.valueOf(5.8)))
+            .build();
 
     @Test
     @DisplayName("Null input should result with Invalid Input message")
